@@ -1,0 +1,23 @@
+type Notification {
+    id: ID!
+    user: User!
+    sender: User!
+    content: String!
+    createdAt: String!
+}
+
+input NewNotification {
+    userID: String!
+    senderID: String!
+    content: String!
+    createdAt: String!
+}
+
+extend type Query {
+    getUserNotifications(token: String!): [Notification!]!
+}
+
+extend type Mutation {
+    createNotification(newNotification: NewNotification!): Notification!
+    deleteNotification(id: String!): Boolean!
+}

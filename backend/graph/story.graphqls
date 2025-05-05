@@ -1,0 +1,30 @@
+type Story {
+    id: ID!
+    user: User!
+    privacy: String!
+    createdAt: String!
+}
+
+type StoryMedia {
+    id: ID!
+    mediaLink: String!
+    story: Story!
+}
+
+input NewStory {
+    userID: String!
+    privacy: String!
+    createdAt: String!
+}
+
+extend type Query {
+    getAllStories: [Story!]!
+    getAllStoriesMedia: [StoryMedia!]!
+    getUserStories(userID: String!): [Story!]!
+}
+
+extend type Mutation {
+    createStory(inputStory: NewStory!): Story!
+    createStoryMedia(storyID: String!, mediaLink: String!): StoryMedia!
+    deleteStory(id: String!): Boolean!
+}

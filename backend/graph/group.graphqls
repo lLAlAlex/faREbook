@@ -1,0 +1,63 @@
+type Group {
+    id: ID!
+    name: String!
+    description: String!
+    createdAt: String!
+    creator: User!
+    status: String!
+}
+
+type GroupProfile {
+    id: ID!
+    group: Group!
+    imageLink: String!
+}
+
+type Member {
+    id: ID!
+    user: User!
+    group: Group!
+    joinedAt: String!
+    role: String!
+}
+
+type RequestedMember {
+    id: ID!
+    user: User!
+    group: Group!
+}
+
+type MemberInvite {
+    id: ID!
+    user: User!
+    sender: User!
+    group: Group!
+}
+
+input NewGroup {
+    name: String!
+    description: String!
+    createdAt: String!
+    creatorID: String!
+    status: String!
+}
+
+extend type Query {
+    getGroups: [Group!]!
+    getGroupProfiles: [GroupProfile!]!
+    getRequestedMembers(groupID: String!): [RequestedMember!]!
+    getUserGroups(userID: String!): [Group!]!
+    getGroup(id: String!): Group!
+    getGroupMembers(groupID: String!): [Member!]!
+    searchGroup(query: String!): [Group!]!
+    getMemberInvites: [MemberInvite!]!
+}
+
+extend type Mutation {
+    createGroup(inputGroup: NewGroup!): Group!
+    createGroupProfile(groupID: String!, imageLink: String!): GroupProfile!
+    createMember(userID: String!, groupID: String!, role: String!): Member!
+    createMemberRequest(userID: String!, groupID: String!): RequestedMember!
+    createGroupInvite(userID: String!, senderID: String!, groupID: String!): MemberInvite!
+    deleteGroupInvite(id: String!): Boolean!
+}

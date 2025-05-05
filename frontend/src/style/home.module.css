@@ -1,0 +1,613 @@
+/* html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+} */
+
+#root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#flexContainer {
+    display: flex;
+    margin-top: 12vh;
+    width: 100%;
+}
+
+#leftmenu {
+    /* display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    flex-direction: column; */
+    position: fixed;
+    right: -20vh;
+    width: 100%;
+    font-size: 2vh;
+    z-index: 1;
+}
+
+#content {
+    display: flex;
+    flex-grow: 5;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+}
+
+#rightmenu {
+    /* display: flex;
+    flex-grow: 1;
+    justify-content: center; */
+    position: fixed;
+    left: 50vh;
+    width: 100%;
+    z-index: 1;
+}
+
+#profileframe {
+    background-color: #ededed;
+    margin-right: 2vh;
+    border-radius: 50%;
+    width: 6vh;
+    height: 6vh;
+    overflow: hidden;
+}
+/* 
+#profile {
+    
+} */
+
+#homeprofilepic {
+    width: 6vh;
+    border-radius: 50%;
+}
+
+#postcontainer {
+    display: flex;
+    width: 70vh;
+    height: 10vh;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 1vh;
+    margin-bottom: 5vh;
+    padding: 2vh;
+}
+
+#profilemenu {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#profilename {
+    display: flex;
+    font-weight: bold;
+}
+
+#posts {
+    display: flex;
+    flex-direction: column;
+    width: 70vh;
+    height: auto;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 1vh;
+    padding: 2vh;
+    margin-bottom: 3vh;
+}
+
+#postfield {
+    height: 4vh;
+    border-radius: 2vh;
+    border: none;
+    background-color: #ededed;
+    cursor: pointer;
+}
+
+#postdelete {
+    display: flex;
+    font-size: 2vh;
+    font-weight: bold;
+    justify-content: end;
+    flex-grow: 2;
+    cursor: pointer;
+}
+
+#postfield:hover {
+    background-color: #d4d4d4;
+}
+
+#myModal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity to your preference */
+    z-index: 500000;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 2vh;
+    border: 1px solid #888;
+    width: 60vh;
+    height: auto;
+    border-radius: 2vh;
+}
+  
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 5vh;
+    font-weight: bold;
+    align-self: flex-end;
+    height: 5vh;
+}
+
+#postheader {
+    margin-top: 0vh;
+    width: auto;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.divider {
+    margin: 10px 0;
+    border-top: 1px solid #ccc;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.privacyDropdown {
+    border: none;
+    width: 10vh;
+    height: 3vh;
+    background-color: #ededed;
+    font-size: 1.4vh;
+    border-radius: 1vh;
+    align-self: flex-start;
+}
+
+#profilegroup {
+    display: flex;
+    flex-direction: column;
+}
+
+#postcontent {
+    width: 100%;
+    margin-top: 2vh;
+    border: none;
+    overflow-wrap: break-word;
+    overflow: auto;
+    resize: vertical;
+    height: auto;
+    min-height: 3vh;
+    font-family: unset;
+    font-size: 2vh;
+    max-height: 15vh;
+    overflow-y: auto;
+}
+
+#attachments {
+    border-color: #ededed;
+    border: 0.3vh solid #ccc;
+    padding-left: 2vh;
+    border-radius: 1vh;
+    align-items: center;
+}
+
+#postbtn {
+    width: 100%;
+    background-color: #2074e4;
+    color: white;
+    margin-top: 2vh;
+}
+
+#postbtn:hover {
+    background-color: #1b64c4;
+}
+
+.imageIcon {
+    width: 4vh;
+    height: 4vh;
+    margin-left: 10vh;
+    cursor: pointer;
+}
+
+#imageCarousel {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: auto;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+    max-height: 20vh;
+}
+  
+#imageCarousel img {
+    width: 12vh;
+    height: 12vh;
+    margin-right: 10px;
+    object-fit: cover;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+  
+#imageCarousel img:hover {
+    border-color: #ccc;
+}
+
+#postrow {
+    display: flex;
+    flex-direction: row;
+    padding: 1vh;
+}
+
+#postdata {
+    align-items: start;
+    text-align: start;
+}
+
+#postname {
+    margin: 0;
+}
+
+#postdate {
+    font-size: 2vh;
+}
+
+#postedcontent {
+    font-size: 2.8vh;
+    text-align: left;
+}
+
+#postaction {
+    display: flex;
+    flex-direction: row;
+    padding: 1vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#action {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#like {
+    margin-left: 1vh;
+    margin-right: 10vh;
+    cursor: pointer;
+}
+
+#comment {
+    margin-left: 1vh;
+    cursor: pointer;
+    margin-right: 10vh;
+}
+
+#share {
+    cursor: pointer;
+    margin-left: 1vh;
+}
+
+#likecount {
+    margin-left: 1vh;
+    font-size: 2vh;
+}
+
+#commentcount {
+    font-size: 2vh;
+    margin-left: auto;
+}
+
+.commentModalContent {
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 2vh;
+    border: 1px solid #888;
+    width: 90vh;
+    height: 80vh;
+    border-radius: 2vh;
+}
+
+.commentrichtext {
+    padding: 0;
+}
+
+#postactionrow {
+    display: flex;
+    flex-direction: row;
+    padding: 1vh;
+    margin-top: auto;
+}
+
+#commentlayout {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2vh;
+}
+
+#commentrow {
+    display: flex;
+}
+
+.commentPicFrame {
+    background-color: #ededed;
+    margin-right: 2vh;
+    border-radius: 50%;
+    width: 5vh;
+    height: 5vh;
+    overflow: hidden;
+}
+
+.commentPic {
+    width: 5vh;
+    border-radius: 50%;
+}
+
+.commentData {
+    display: flex;
+    flex-direction: column;
+    background-color: #ededed;
+    padding: 1vh;
+    border-radius: 2vh;
+}
+
+.commentName {
+    align-self: flex-start;
+    margin: 0;
+}
+
+.commentText {
+    align-self: flex-start;
+}
+
+.commentActions {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1vh;
+    margin-left: 8vh;
+}
+
+.scrollable {
+    overflow-y: auto;
+}
+
+.commentLike {
+    font-size: 1.5vh;
+    margin-right: 1vh;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.commentLike:hover {
+    text-decoration: underline;
+}
+
+.commentReply {
+    font-size: 1.5vh;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.commentReply:hover {
+    text-decoration: underline;
+}
+
+.commentCreatedAt {
+    font-size: 1.5vh;
+    margin-left: 1vh;
+}
+
+.commentLikeGroup {
+    display: flex;
+    align-self: self-end;
+    background-color: white;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    border-radius: 2vh;
+    margin-left: -0.5vh;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.commentLikeCount {
+    font-size: 2.5vh;
+}
+
+.commentrow {
+    display: flex;
+    flex-direction: row;
+    padding: 1vh;
+    margin-left: 6vh;
+}
+
+.replyprofileframe {
+    background-color: #ededed;
+    margin-right: 2vh;
+    border-radius: 50%;
+    width: 4vh;
+    height: 4vh;
+    overflow: hidden;
+}
+
+.replyprofilepic {
+    width: 4vh;
+    border-radius: 50%;
+}
+
+.replyfield {
+    height: 4vh;
+    border-radius: 1vh;
+    border: none;
+    background-color: #ededed;
+}
+
+.sendicon {
+    align-self: center;
+    margin-left: -5vh;
+    cursor: pointer;
+    background-color: #ededed;
+    padding-left: 1vh;
+}
+
+.replyData {
+    display: flex;
+    flex-direction: column;
+    background-color: #ededed;
+    padding: 1vh;
+    border-radius: 2vh;
+}
+
+.replyName {
+    align-self: flex-start;
+    margin: 0;
+}
+
+.replyText {
+    align-self: flex-start;
+}
+
+.revealReplies {
+    align-self: flex-start;
+    margin-left: 8vh;
+    font-size: 2vh;
+    margin-bottom: 1vh;
+    cursor: pointer;
+}
+
+.revealReplies:hover {
+    text-decoration: underline;
+}
+
+#storycontainer {
+    display: flex;
+    width: 70vh;
+    height: 40vh;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    margin-bottom: 2vh;
+    border-radius: 1vh;
+    padding: 2vh;
+}
+
+#storyprofile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#storyprofileframe {
+    background-color: #e8e4e4;
+    border-radius: 2vh;
+    width: 20vh;
+    height: 30vh;
+    overflow: hidden;
+    display: flex;
+    cursor: pointer;
+}
+
+#storyprofilepic {
+    width: 20vh;
+    height: 30vh;
+    object-fit: cover;
+    border-radius: 2vh;
+    align-self: center;
+}
+
+#createstorybtn {
+    width: 6vh;
+    height: 6vh;
+    background-color: #035efc;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: white;
+    border: solid;
+    border-color: white;
+    border-width: 0.7vh;
+    margin-top: -3vh;
+    font-size: 3vh;
+    cursor: pointer;
+}
+
+.storyTextStyle {
+    font-size: 2vh;
+}
+
+.postimage {
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.carouselLeftButton {
+    font-size: 4vh;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.carouselRightButton {
+    font-size: 4vh;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#carouselrow {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1vh;
+    justify-content: space-between;
+}
+
+.profileHover {
+    display: flex;
+    position: absolute;
+    width: 60vh;
+    height: 20vh;
+    background-color: white;
+    margin-top: 8vh;
+    border-radius: 2vh;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+    padding: 2vh;
+}
+
+#profileHoverFrame {
+    background-color: #ededed;
+    margin-right: 2vh;
+    border-radius: 50%;
+    width: 15vh;
+    height: 15vh;
+    overflow: hidden;
+}
+
+#hoverprofilepic {
+    width: 15vh;
+    border-radius: 50%;
+}
+
+.hoverDob {
+    font-size: 2vh;
+}

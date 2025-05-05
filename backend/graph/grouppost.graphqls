@@ -1,0 +1,59 @@
+type GroupPost {
+    id: ID!
+    group: Group!
+    user: User!
+    content: String!
+    privacy: String!
+    createdAt: String!
+    likes: Int!
+    comments: Int!
+}
+
+input NewGroupPost {
+    userID: String!
+    groupID: String!
+    content: String!
+    privacy: String!
+    createdAt: String!
+    likes: Int!
+    comments: Int!
+}
+
+type GroupPostMedia {
+	id: ID!
+	mediaLink: String!
+    groupPost: GroupPost!
+}
+
+type GroupPostLike {
+    id: ID!
+    user: User!
+    groupPost: GroupPost!
+}
+
+type GroupPostComment {
+    id: ID!
+    comment: String!
+    user: User!
+    groupPost: GroupPost!
+    createdAt: String!
+    likes: Int!
+    replies: Int!
+}
+
+extend type Query {
+    getGroupPosts(groupID: String!, limit: Int, offset: Int): [GroupPost!]!
+    getLikedGroupPosts(token: String!): [GroupPostLike!]!
+    getGroupPostComments(groupPostID: String!): [GroupPostComment!]!
+    getGroupPostMedias: [GroupPostMedia!]!
+}
+
+extend type Mutation {
+    createGroupPost(inputGroupPost: NewGroupPost!): GroupPost!
+    createGroupLike(userID: String!, groupPostID: String!): GroupPostLike!
+    createGroupComment(userID: String!, groupPostID: String!, comment: String!): GroupPostComment!
+    deleteGroupPost(id: String!): Boolean!
+    deleteGroupLike(userID: String!, groupPostID: String!): Boolean!
+    deleteGroupComment(id: String!): Boolean!
+    createGroupPostMedia(groupPostID: String!, mediaLink: String!): GroupPostMedia!
+}

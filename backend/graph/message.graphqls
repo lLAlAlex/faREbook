@@ -1,0 +1,46 @@
+type Conversation {
+    id: ID!
+    user: User!
+    user2: User!
+    createdAt: String!
+}
+
+type Message {
+    id: ID!
+    conversation: Conversation!
+    user: User!
+    content: String!
+    createdAt: String!
+    hasMedia: Boolean!
+}
+
+type MessageMedia {
+    id: ID!
+    message: Message!
+    mediaLink: String!
+}
+
+input NewConversation {
+    userID: String!
+    user2ID: String!
+}
+
+input NewMessage {
+    conversationID: String!
+    userID: String!
+    content: String!
+    hasMedia: Boolean!
+}
+
+extend type Query {
+    getUserConversation(userID: String!): [Conversation!]!
+    getConversationMessage(conversationID: String!): [Message!]!
+    getMessageMedias: [MessageMedia!]!
+    searchConversation(query: String!): [Conversation!]!
+}
+
+extend type Mutation {
+    createConversation(newConversation: NewConversation!): Conversation!
+    createMessage(newMessage: NewMessage!): Message!
+    createMessageMedia(messageID: String!, mediaLink: String!): MessageMedia!
+}

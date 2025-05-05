@@ -1,0 +1,78 @@
+scalar Time
+
+type Post {
+    id: ID!
+    user: User!
+    content: String!
+    privacy: String!
+    createdAt: String!
+    likes: Int!
+    comments: Int!
+}
+
+input NewPost {
+    userID: String!
+    content: String!
+    privacy: String!
+    createdAt: String!
+    likes: Int!
+    comments: Int!
+}
+
+type PostImage {
+	id: ID!
+	imageLink: String!
+    post: Post!
+}
+
+type PostVideo {
+	id: ID!
+	videoLink: String!
+    post: Post!
+}
+
+type PostTag {
+	id: ID!
+    tag: String!
+	user: User!
+    post: Post!
+}
+
+type PostLike {
+    id: ID!
+    user: User!
+    post: Post!
+}
+
+type PostComment {
+    id: ID!
+    comment: String!
+    user: User!
+    post: Post!
+    createdAt: String!
+    likes: Int!
+    replies: Int!
+}
+
+extend type Query {
+    getOwnPost(token: String!): [Post!]!
+    getUserPosts(userID: String!): [Post!]!
+    getAllPost(limit: Int, offset: Int): [Post!]!
+    # getUserLike(userID: String, postID: String): PostLike!
+    getLikedPost(token: String!): [PostLike!]!
+    getAllPostComments(postID: String!): [PostComment!]!
+    getPostLike(postID: String!): Int!
+    getPostImages(postID: String!): [PostImage!]!
+    getAllPostImages: [PostImage!]!
+    searchPost(query: String!): [Post!]!
+}
+
+extend type Mutation {
+    createPost(inputPost: NewPost!): Post!
+    createLike(userID: String!, postID: String!): PostLike!
+    createComment(userID: String!, postID: String!, comment: String!): PostComment!
+    deletePost(id: String!): Boolean!
+    deleteLike(userID: String!, postID: String!): Boolean!
+    deleteComment(id: String!): Boolean!
+    createPostImage(postID: String!, imageLink: String!): PostImage!
+}

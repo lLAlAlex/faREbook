@@ -1,0 +1,26 @@
+type CommentReply {
+   id: ID!
+   reply: String!
+   user: User!
+   createdAt: String!
+   comment: PostComment!
+   likes: Int!
+}
+
+type CommentLike {
+   id: ID!
+   user: User!
+   comment: PostComment!
+}
+
+extend type Query {
+   getCommentReplies(commentID: String!): [CommentReply!]!
+   getLikedComments(token: String!): [CommentLike!]!
+}
+
+extend type Mutation {
+   createCommentLike(userID: String!, commentID: String!): CommentLike!
+   createCommentReply(userID: String!, commentID: String!, reply: String!): CommentReply!
+   deleteCommentLike(userID: String!, commentID: String!): Boolean!
+   deleteCommentReply(id: String!): Boolean!
+}

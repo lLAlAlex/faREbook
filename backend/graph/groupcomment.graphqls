@@ -1,0 +1,26 @@
+type GroupCommentReply {
+   id: ID!
+   reply: String!
+   user: User!
+   createdAt: String!
+   groupComment: GroupPostComment!
+   likes: Int!
+}
+
+type GroupCommentLike {
+   id: ID!
+   user: User!
+   groupComment: GroupPostComment!
+}
+
+extend type Query {
+   getGroupCommentReplies(groupCommentID: String!): [GroupCommentReply!]!
+   getLikedGroupComments(token: String!): [GroupCommentLike!]!
+}
+
+extend type Mutation {
+   createGroupCommentLike(userID: String!, groupCommentID: String!): GroupCommentLike!
+   createGroupCommentReply(userID: String!, groupCommentID: String!, reply: String!): GroupCommentReply!
+   deleteGroupCommentLike(userID: String!, groupCommentID: String!): Boolean!
+   deleteGroupCommentReply(id: String!): Boolean!
+}

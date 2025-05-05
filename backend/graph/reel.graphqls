@@ -1,0 +1,76 @@
+type Reel {
+    id: ID!
+    user: User!
+    title: String!
+    privacy: String!
+    createdAt: String!
+    likes: Int!
+    comments: Int!
+}
+
+input NewReel {
+    userID: String!
+    title: String!
+    privacy: String!
+    createdAt: String!
+    likes: Int!
+    comments: Int!
+}
+
+type ReelVideo {
+    id: ID!
+    reel: Reel!
+    videoLink: String!
+}
+
+type ReelComment {
+    id: ID!
+    user: User!
+    reel: Reel!
+    comment: String!
+    createdAt: String!
+    likes: Int!
+    replies: Int!
+}
+
+type ReelLike {
+    id: ID!
+    user: User!
+    reel: Reel!
+}
+
+type ReelCommentReply {
+    id: ID!
+    user: User!
+    comment: ReelComment!
+    reply: String!
+    createdAt: String!
+    likes: Int!
+}
+
+type ReelCommentLike {
+   id: ID!
+   user: User!
+   comment: ReelComment!
+}
+
+extend type Query {
+    getPublicReels: [Reel!]!
+    getReelVideos: [ReelVideo!]!
+    getLikedReels(token: String!): [ReelLike!]!
+    getReelComments(reelID: String!): [ReelComment!]!
+    getReelCommentReplies(commentID: String!): [ReelCommentReply!]!
+    getReelLikedComments(token: String!): [ReelCommentLike!]!
+}
+
+extend type Mutation {
+    createReel(newReel: NewReel!): Reel!
+    createReelVideo(reelID: String!, videoLink: String!): ReelVideo!
+    createReelLike(userID: String!, reelID: String!): ReelLike!
+    createReelComment(userID: String!, reelID: String!, comment: String!): ReelComment!
+    deleteReelLike(userID: String!, reelID: String!): Boolean!
+    createReelCommentLike(userID: String!, commentID: String!): ReelCommentLike!
+    createReelCommentReply(userID: String!, commentID: String!, reply: String!): ReelCommentReply!
+    deleteReelCommentLike(userID: String!, commentID: String!): Boolean!
+    deleteReelCommentReply(id: String!): Boolean!
+}

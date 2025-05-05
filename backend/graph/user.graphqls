@@ -1,0 +1,54 @@
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  dob: String!
+  gender: String!
+  status: String!
+}
+
+type UserProfile {
+  id: ID!
+  user: User!
+  imageLink: String!
+}
+
+type UserProfileCover {
+  id: ID!
+  user: User!
+  imageLink: String!
+}
+
+input NewUser {
+  name: String!
+  email: String!
+  dob: String!
+  gender: String!
+  password: String!
+  status: String!
+}
+
+type Query {
+  getUser(id:ID!): User!
+  getUserProfile(userID: String!): UserProfile!
+  getAllUserProfile: [UserProfile!]!
+  getAllUser: [User!]!
+  getUserByEmail(email: String!): User!
+  getUserByToken(token: String!): User!
+  getUserProfileCover(userID: String!): UserProfileCover!
+  searchUser(query: String!): [User!]!
+}
+
+type Mutation {
+  createUser(inputUser: NewUser!): User!
+  createUserProfile(userID: String!, imageLink: String!): UserProfile!
+  createUserProfileCover(userID: String!, imageLink: String!): UserProfileCover!
+  updateUser(id: ID!, inputUser: NewUser!): User!
+  updateUserProfile(userID: String!, imageLink: String!): UserProfile!
+  updateUserProfileCover(userID: String!, imageLink: String!): UserProfileCover!
+  deleteUser(id: ID!): User!
+  activateUser(id: ID!): User!
+  login(email: String!, password: String!): String!
+  forgotPassword(id: ID!, password: String!): User!
+}
