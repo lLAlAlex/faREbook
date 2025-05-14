@@ -104,7 +104,7 @@ const Notifications = () => {
 
     const getProfileImage = (userID) => {
         const userProfile = profileData?.getAllUserProfile.find((profile) => profile.user.id === userID);
-        return userProfile ? userProfile.imageLink : './profile.png';
+        return userProfile ? userProfile.imageLink : 'http://localhost:5173/profile.png';
     };
 
     const { data: notificationData, refetch: refetchNotifications } = useQuery(GET_USER_NOTIFICATIONS, { variables: {token: token}})

@@ -67,7 +67,7 @@ const Login = () => {
             <div id="flex-container">
                 <img id="header" src="./public/header.png"></img>
                 <div className="register-container">
-                    <h2 id="headertitle">Log in to Facebook</h2>
+                    <h2 id="headertitle">Log in to faREbook</h2>
                     <>
                         {errorMsg && <div className="error-message">{errorMsg}</div>}
                         <div className="form-group">
@@ -78,6 +78,7 @@ const Login = () => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 placeholder='Email address'
+                                style={{borderRadius: "0.5rem", backgroundColor: "white"}}
                             />
                         </div>
                         <div className="form-group">
@@ -88,6 +89,7 @@ const Login = () => {
                                 value={formData.password}
                                 onChange={handleChange}
                                 placeholder='Password'
+                                style={{borderRadius: "0.5rem", backgroundColor: "white"}}
                             />
                         </div>
                         <button id='loginbtn' type="submit" onClick={handleSubmit}>Log In</button>

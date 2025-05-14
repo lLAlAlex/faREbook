@@ -157,7 +157,8 @@ const Groups = () => {
 
     const getGroupProfile = (groupID) => {
         const groupProfile = groupProfilesData?.getGroupProfiles.find((profile) => profile.group.id === groupID);
-        return groupProfile ? groupProfile.imageLink : './profile.png';
+        console.log(groupProfile)
+        return groupProfile ? groupProfile.imageLink : 'http://localhost:5173/profile.png';
     }
 
     // console.log(groupProfilesData);

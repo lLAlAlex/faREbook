@@ -5,9 +5,11 @@ go 1.20
 require (
 	github.com/99designs/gqlgen v0.17.36
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/go-chi/chi/v5 v5.2.1
 	github.com/google/uuid v1.3.0
 	github.com/gorilla/websocket v1.5.0
 	github.com/joho/godotenv v1.5.1
+	github.com/rs/cors v1.11.1
 	github.com/vektah/gqlparser/v2 v2.5.8
 	golang.org/x/crypto v0.8.0
 	gorm.io/driver/postgres v1.5.2

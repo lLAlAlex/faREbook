@@ -141,7 +141,7 @@ const Reels = () => {
 
     const getProfileImage = (userID) => {
         const userProfile = profileData?.getAllUserProfile.find((profile) => profile.user.id === userID);
-        return userProfile ? userProfile.imageLink : './profile.png';
+        return userProfile ? userProfile.imageLink : 'http://localhost:5173/profile.png';
     };
 
     const closePage = () => {

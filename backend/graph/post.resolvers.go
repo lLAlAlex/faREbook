@@ -216,6 +216,7 @@ func (r *postTagResolver) Post(ctx context.Context, obj *model.PostTag) (*model.
 // Post is the resolver for the post field.
 func (r *postVideoResolver) Post(ctx context.Context, obj *model.PostVideo) (*model.Post, error) {
 	post := &model.Post{}
+	
 	if err := r.DB.Where("id = ?", obj.PostID).First(post).Error; err != nil {
 		return nil, err
 	}

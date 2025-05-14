@@ -228,7 +228,7 @@ const Search = () => {
 
     const getProfileImage = (userID) => {
         const userProfile = profileData?.getAllUserProfile.find((profile) => profile.user.id === userID);
-        return userProfile ? userProfile.imageLink : './profile.png';
+        return userProfile ? userProfile.imageLink : 'http://localhost:5173/profile.png';
     };
 
     const calculateTimeAgo = (createdAt) => {
@@ -292,7 +292,7 @@ const Search = () => {
     const { data: groupProfilesData } = useQuery(GET_GROUP_PROFILES);
     const getGroupProfile = (groupID) => {
         const groupProfile = groupProfilesData?.getGroupProfiles.find((profile) => profile.group.id === groupID);
-        return groupProfile ? groupProfile.imageLink : './profile.png';
+        return groupProfile ? groupProfile.imageLink : 'http://localhost:5173/profile.png';
     }
 
     window.onscroll = async function () {
@@ -349,7 +349,13 @@ const Search = () => {
                                         </div>
                                     </div>
                                     <div id={styles.postrow}>
-                                        <div id={styles.postedcontent}>{post.content}</div>
+                                        <div id={styles.postedcontent}>
+                                            {(() => {
+                                            const tempDiv = document.createElement('div');
+                                            tempDiv.innerHTML = post.content;
+                                            return tempDiv.textContent || tempDiv.innerText || '';
+                                            })()}
+                                        </div>
                                     </div>
                                     <div id={styles.postImages}>
                                         {postImagesData?.getAllPostImages.filter((image) => image.post.id === post.id).length > 1 ? (

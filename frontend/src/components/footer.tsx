@@ -13,7 +13,7 @@ const Footer = () => {
         bottom: '0',
         width: '100%',
       }}>
-        <p>© {new Date().getFullYear()} Your Website. All rights reserved.</p>
+        <p>© 2023 faREbook. All rights reserved.</p>
       </footer>
     </>
   );

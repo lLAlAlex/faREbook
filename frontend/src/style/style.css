@@ -111,7 +111,7 @@ button {
     position: absolute;
     width: 10%;
     height: 1px;
-    background-color: #ccc;
+    /* background-color: #ccc; */
 }
 
 .or-divider::before {

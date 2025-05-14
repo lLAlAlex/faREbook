@@ -150,7 +150,11 @@ func (r *queryResolver) GetGroups(ctx context.Context) ([]*model.Group, error) {
 // GetGroupProfiles is the resolver for the getGroupProfiles field.
 func (r *queryResolver) GetGroupProfiles(ctx context.Context) ([]*model.GroupProfile, error) {
 	var groupProfile []*model.GroupProfile
-	return groupProfile, r.DB.Find(&groupProfile).Error
+	err := r.DB.Preload("Group").Find(&groupProfile).Error
+    if err != nil {
+        return nil, err
+    }
+    return groupProfile, nil
 }
 
 // GetRequestedMembers is the resolver for the getRequestedMembers field.

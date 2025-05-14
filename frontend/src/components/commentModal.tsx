@@ -281,7 +281,7 @@ const CommentModal = ({ selectedPost, likedPosts, toggleLike, calculateTimeAgo, 
 
     const getProfileImage = (userID) => {
         const userProfile = profileData?.getAllUserProfile.find((profile) => profile.user.id === userID);
-        return userProfile ? userProfile.imageLink : './profile.png';
+        return userProfile ? userProfile.imageLink : 'http://localhost:5173/profile.png';
     };
 
     const { data: postImagesData } = useQuery(GET_ALL_IMAGES);
@@ -302,7 +302,13 @@ const CommentModal = ({ selectedPost, likedPosts, toggleLike, calculateTimeAgo, 
                         </div>
                     </div>
                     <div id={styles.postrow}>
-                        <div id={styles.postedcontent}>{selectedPost.content}</div>
+                        <div id={styles.postedcontent}>
+                            {(() => {
+                                const tempDiv = document.createElement('div');
+                                tempDiv.innerHTML = selectedPost.content;
+                                return tempDiv.textContent || tempDiv.innerText || '';
+                            })()}
+                        </div>
                     </div>
                     <div id={styles.postImages}>
                         {postImagesData?.getAllPostImages.filter((image) => image.post.id === selectedPost.id).length > 1 ? (

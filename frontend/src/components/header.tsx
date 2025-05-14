@@ -163,7 +163,7 @@ const Header = () => {
 
     const getProfileImage = (userID) => {
         const userProfile = profileData?.getAllUserProfile.find((profile) => profile.user.id === userID);
-        return userProfile ? userProfile.imageLink : './profile.png';
+        return userProfile ? userProfile.imageLink : 'http://localhost:5173/profile.png';
     };
 
     const navigate = useNavigate();
@@ -221,7 +221,7 @@ const Header = () => {
                 <img id="logo" src="../facebook.png" onClick={closePage}></img>
                 <div id="search">
                     <div id="searchicon"><HiSearch/></div>
-                    <input id="searchbar" type="text" placeholder="Search Facebook" onKeyDown={handleSearch}/>
+                    <input id="searchbar" style={{color:"black"}} type="text" placeholder="Search Facebook" onKeyDown={handleSearch}/>
                 </div>
                 {/* <div>
                     <ThemeToggle/>

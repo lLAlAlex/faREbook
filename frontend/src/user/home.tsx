@@ -185,7 +185,7 @@ const Home = () => {
 
     const getProfileImage = (userID) => {
         const userProfile = profileData?.getAllUserProfile.find((profile) => profile.user.id === userID);
-        return userProfile ? userProfile.imageLink : './profile.png';
+        return userProfile ? userProfile.imageLink : 'http://localhost:5173/profile.png';
     };
 
     const [itemsLoaded, setItemsLoaded] = useState(5);
@@ -469,7 +469,13 @@ const Home = () => {
                                     }
                                 </div>
                                 <div id={styles.postrow}>
-                                    <div id={styles.postedcontent}>{post.content}</div>
+                                    <div id={styles.postedcontent}>
+                                        {(() => {
+                                        const tempDiv = document.createElement('div');
+                                        tempDiv.innerHTML = post.content;
+                                        return tempDiv.textContent || tempDiv.innerText || '';
+                                        })()}
+                                    </div>
                                 </div>
                                 <div id={styles.postImages}>
                                     {postImagesData?.getAllPostImages.filter((image) => image.post.id === post.id).length > 1 ? (

@@ -268,7 +268,7 @@ const GroupProfile = () => {
     const { data: profileData, refetch: refetchProfile } = useQuery(GET_ALL_PROFILE);
     const getProfileImage = (userID) => {
         const userProfile = profileData?.getAllUserProfile.find((profile) => profile.user.id === userID);
-        return userProfile ? userProfile.imageLink : './profile.png';
+        return userProfile ? userProfile.imageLink : 'http://localhost:5173/profile.png';
     };
 
     const { data: groupProfilesData } = useQuery(GET_GROUP_PROFILES);
@@ -279,7 +279,8 @@ const GroupProfile = () => {
 
     const getGroupProfile = (groupID) => {
         const groupProfile = groupProfilesData?.getGroupProfiles.find((profile) => profile.group.id === groupID);
-        return groupProfile ? groupProfile.imageLink : './profile.png';
+        console.log(groupProfilesData)
+        return groupProfile ? groupProfile.imageLink : 'http://localhost:5173/profile.png';
     }
 
     const handleGroupProfile = (groupID) => {
