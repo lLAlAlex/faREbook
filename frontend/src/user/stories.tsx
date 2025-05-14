@@ -84,7 +84,7 @@ const Stories = () => {
             return (
                 <div className="dropdown-content">
                     <div id="dropdownprofile">
-                        <div id="dropdownprofileicon"><img style={{width:"7vh"}} src="./profile.png"></img></div>
+                        <div id="dropdownprofileicon"><img style={{width:"7vh"}} src="http://localhost:5173/profile.png"></img></div>
                         <div id="dropdownprofilename">{data?.getUserByToken.name}</div>
                     </div>
                     <a href="/login">
@@ -123,12 +123,12 @@ const Stories = () => {
 
     const getProfileImage = (userID) => {
         const userProfile = profileData?.getAllUserProfile.find((profile) => profile.user.id === userID);
-        return userProfile ? userProfile.imageLink : './profile.png';
+        return userProfile ? userProfile.imageLink : 'http://localhost:5173/profile.png';
     };
 
     const getStoryMedia = (storyID) => {
         const storyMedia = storyMediaData?.getAllStoriesMedia.find((m) => m.story.id === storyID);
-        return storyMedia ? storyMedia.mediaLink : './profile.png';
+        return storyMedia ? storyMedia.mediaLink : 'http://localhost:5173/profile.png';
     }
 
     const calculateTimeAgo = (createdAt) => {

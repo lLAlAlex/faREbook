@@ -561,7 +561,7 @@ const Home = () => {
                         )}
                     </div>
                     <div id={styles.rightmenu}>
-                        <div id={styles.profile}><img id={styles.homeprofilepic} src="./profile.png"></img></div>
+                        <div id={styles.profile}><img id={styles.homeprofilepic} src="http://localhost:5173/profile.png"></img></div>
                     </div>
                 </div>
             </body>
